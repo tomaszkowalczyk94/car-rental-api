@@ -23,15 +23,13 @@ public class UserController {
 	@Autowired
 	private UserDao userDao;
 	
-	@GetMapping("users")
-	public ResponseEntity<List<User>> getAllUsers() {
-		List<User> list = userDao.getAllUsers();
-		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
-	}
 	
 	@RequestMapping("/test")
-	public String hello() {
-		return "Hello ";
+	public User hello() {
+		User user = userDao.get(1);
+		
+		
+		return user;
 	}
 	
 }

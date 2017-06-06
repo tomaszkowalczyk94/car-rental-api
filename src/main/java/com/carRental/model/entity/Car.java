@@ -17,7 +17,7 @@ public class Car {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private int id;
 	
 	@NotNull
 	private String registrationNumber;
@@ -34,7 +34,7 @@ public class Car {
 	public Car() {
 	}
 	
-	public Car(long id) {
+	public Car(int id) {
 		this.id = id;
 	}
 	
