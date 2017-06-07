@@ -15,5 +15,9 @@ import com.carRental.model.entity.User;
 @Transactional
 @Repository
 public class UserDao extends AbstractHibernateDao<User, Integer> {
-
+	
+	public List<User> getAll() {
+		return this.entityManager.createQuery("SELECT u FROM User u").getResultList();
+	}
+	
 }

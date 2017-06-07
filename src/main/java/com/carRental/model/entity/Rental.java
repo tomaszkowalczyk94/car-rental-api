@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "rentals")
 public class Rental {
@@ -28,10 +31,12 @@ public class Rental {
 	
 	@ManyToOne()
 	@NotNull
+	@JsonManagedReference
 	private User user;
 	
 	@ManyToOne()
 	@NotNull
+	@JsonManagedReference
 	private Car car;
 	
 	public int getId() {

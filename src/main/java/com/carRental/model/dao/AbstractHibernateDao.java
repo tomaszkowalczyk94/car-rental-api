@@ -1,6 +1,7 @@
 package com.carRental.model.dao;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,8 +31,7 @@ public abstract class AbstractHibernateDao<T, PK> {
 
 	public T update(T t) {
 		return this.entityManager.merge(t);
-	}
-	
+	}	
 	
 	public void delete(T t) {
 		t = this.entityManager.merge(t);

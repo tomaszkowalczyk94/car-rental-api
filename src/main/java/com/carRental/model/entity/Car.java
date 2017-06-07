@@ -11,6 +11,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "cars")
 public class Car {
@@ -29,6 +32,7 @@ public class Car {
 	private String color;
 	
 	@OneToMany(mappedBy = "car")
+	@JsonBackReference
 	private Set<Rental> rentals = new HashSet<Rental>(0);
 	
 	public Car() {
