@@ -17,4 +17,10 @@ public class RentalDao extends AbstractHibernateDao<Rental, Integer> implements 
 		return this.entityManager.createQuery("SELECT r FROM Rental r").getResultList();
 	}
 
+	@Override
+	public boolean isExist(Rental t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

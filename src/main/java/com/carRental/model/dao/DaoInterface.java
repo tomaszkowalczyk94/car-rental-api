@@ -16,5 +16,5 @@ public interface DaoInterface<T, PK> {
 
 	public void delete(T t);
 	
-	
+	public boolean isExist(T t);
 }

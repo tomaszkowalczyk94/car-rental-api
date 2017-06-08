@@ -16,4 +16,10 @@ public class CarDao extends AbstractHibernateDao<Car, Integer> implements DaoInt
 		return this.entityManager.createQuery("SELECT c FROM Car c").getResultList();
 	}
 
+	@Override
+	public boolean isExist(Car t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

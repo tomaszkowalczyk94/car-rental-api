@@ -1,6 +1,8 @@
 package com.carRental.model.entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -13,9 +15,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "users")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User {
 
 	@Id
@@ -24,13 +30,43 @@ public class User {
 
 	@NotNull
 	private String email;
-
-	@NotNull
-	private String name;
 	
+	@NotNull
+	private String username;
+	
+	@NotNull
+	private String firstName;
+	
+	@NotNull
+	private String lastName;
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	@OneToMany(mappedBy = "user")
-	@JsonBackReference
-	private Set<Rental> rentals = new HashSet<Rental>(0);
+	@JsonIgnore
+	private List<Rental> rentals = new ArrayList<Rental>(0);
 	
 	public User() {
 	}
@@ -55,19 +91,12 @@ public class User {
 		this.email = email;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 	
-	public Set<Rental> getRentals() {
+	public List<Rental> getRentals() {
 		return rentals;
 	}
 
-	public void setRentals(Set<Rental> rentals) {
+	public void setRentals(List<Rental> rentals) {
 		this.rentals = rentals;
 	}
 

@@ -6,6 +6,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
 public abstract class AbstractHibernateDao<T, PK> {
 	
 	protected Class<T> entityClass;
@@ -21,6 +24,7 @@ public abstract class AbstractHibernateDao<T, PK> {
 	protected EntityManager entityManager;
 
 	public T create(T t) {
+		System.out.println(t);
 		this.entityManager.persist(t);
 		return t;
 	}

@@ -1,6 +1,8 @@
 package com.carRental.model.entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -33,7 +35,7 @@ public class Car {
 	
 	@OneToMany(mappedBy = "car")
 	@JsonBackReference
-	private Set<Rental> rentals = new HashSet<Rental>(0);
+	private List<Rental> rentals = new ArrayList<Rental>(0);
 	
 	public Car() {
 	}
@@ -42,7 +44,7 @@ public class Car {
 		this.id = id;
 	}
 	
-	public Set<Rental> getRentals()  {
+	public List<Rental> getRentals()  {
 		return this.rentals;
 	}
 	
