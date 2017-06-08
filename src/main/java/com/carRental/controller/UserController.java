@@ -13,37 +13,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.carRental.model.dao.DaoInterface;
 import com.carRental.model.dao.UserDao;
 import com.carRental.model.entity.User;
 
 @RestController
 @RequestMapping("users")
-public class UserController {
+public class UserController extends EntityController<User, Integer> implements EntityControllerInterface<User, Integer> {
 	
 	
 	@Autowired
 	private UserDao userDao;
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ResponseEntity<List<User>> getUsers() {
-		List<User> users = userDao.getAll();
-		
-		if(users.isEmpty()){
-            return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+
+	@Override
+	protected DaoInterface getDao() {
+		return this.userDao;
 	}
+
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
-	public ResponseEntity getUser(@PathVariable int id) {
-		User user = userDao.get(id);
 		
-		if(user == null) {
-			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-		}
-		
-		
-		return new ResponseEntity<User>(user,HttpStatus.OK);
-	}
-	
 }
