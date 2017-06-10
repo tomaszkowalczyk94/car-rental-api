@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "cars")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Car {
+public class Car implements EntityInterface<Integer> {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,15 +43,15 @@ public class Car {
 	public Car() {
 	}
 	
-	public Car(int id) {
+	public Car(Integer id) {
 		this.id = id;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -86,8 +86,5 @@ public class Car {
 	public void setRentals(List<Rental> rentals) {
 		this.rentals = rentals;
 	}
-
-	
-
 	
 }

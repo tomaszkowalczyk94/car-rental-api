@@ -36,8 +36,10 @@ public abstract class AbstractHibernateDao<T, PK> {
 		return this.entityManager.merge(t);
 	}	
 	
-	public void delete(T t) {
+	public void delete(T t) {	
 		t = this.entityManager.merge(t);
 		this.entityManager.remove(t);
 	}
+	
+	
 }

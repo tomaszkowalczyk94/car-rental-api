@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "rentals")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Rental {
+public class Rental implements EntityInterface<Integer> {
 	
 	
 	@Id
@@ -43,11 +43,11 @@ public class Rental {
 	@JsonIdentityReference(alwaysAsId = true)
 	private Car car;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.carRental.model.dao.DaoInterface;
+import com.carRental.model.entity.EntityInterface;
 import com.carRental.model.entity.User;
 
-public abstract class EntityController<T, PK> {
+public abstract class EntityController<T extends EntityInterface<PK>, PK> {
 	
 	protected abstract DaoInterface<T, PK> getDao();
 	
@@ -47,6 +48,34 @@ public abstract class EntityController<T, PK> {
  
         getDao().create(entity);
         return new ResponseEntity<T>(HttpStatus.CREATED);
+    }
+	
+	
+	
+	//todo validacja
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<T> updateUser(@PathVariable("id") PK id, @RequestBody T entity) {
+         
+        T currentEntity = getDao().get(id);
+         
+        if (currentEntity==null) {
+            return new ResponseEntity<T>(HttpStatus.NOT_FOUND);
+        } 
+        entity.setId(id);
+        getDao().update(entity);
+        return new ResponseEntity<T>(entity, HttpStatus.OK);
+    }
+    
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<T> deleteEntity(@PathVariable("id") PK id) {
+
+        T entity = getDao().get(id);
+        if (entity == null) {
+            return new ResponseEntity<T>(HttpStatus.NOT_FOUND);
+        }
+ 
+        getDao().delete(entity);
+        return new ResponseEntity<T>(HttpStatus.NO_CONTENT);
     }
  
 }
