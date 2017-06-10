@@ -41,9 +41,6 @@ public abstract class EntityController<T, PK> {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/")
     public ResponseEntity<T> createEntity(@RequestBody T entity) {
- 
-		System.out.println("route!!!");
-		
         if (getDao().isExist(entity)) {
             return new ResponseEntity<T>(HttpStatus.CONFLICT);
         }

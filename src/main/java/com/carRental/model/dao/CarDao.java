@@ -2,6 +2,8 @@ package com.carRental.model.dao;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,9 +19,12 @@ public class CarDao extends AbstractHibernateDao<Car, Integer> implements DaoInt
 	}
 
 	@Override
-	public boolean isExist(Car t) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isExist(Car car) {
+		Query query = this.entityManager.createQuery("SELECT count(c) FROM Car c WHERE c.registrationNumber = :registrationNumber")
+		.setParameter("registrationNumber", car.getRegistrationNumber());
+		
+		Long count = (Long)query.getSingleResult(); 
+		return (count == 1);
 	}
 
 }

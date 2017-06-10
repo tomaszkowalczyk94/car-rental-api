@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -34,12 +35,12 @@ public class Rental {
 	
 	@ManyToOne()
 	@NotNull
-	@JsonManagedReference
+	@JsonIdentityReference(alwaysAsId = true)
 	private User user;
 	
 	@ManyToOne()
 	@NotNull
-	@JsonManagedReference
+	@JsonIdentityReference(alwaysAsId = true)
 	private Car car;
 	
 	public int getId() {
@@ -73,6 +74,14 @@ public class Rental {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	/**
+	 * Inaczej nie potrafiłem
+	 * @param userId
+	 */
+	public void setUser(String userId) {
+		this.user = new User(Integer.parseInt(userId));
+	}
 
 	public Car getCar() {
 		return car;
@@ -81,7 +90,13 @@ public class Rental {
 	public void setCar(Car car) {
 		this.car = car;
 	}
-
-
+	
+	/**
+	 * Inaczej nie potrafiłem
+	 * @param userId
+	 */
+	public void setCar(String carId) {
+		this.car = new Car(Integer.parseInt(carId));
+	}
 	
 }

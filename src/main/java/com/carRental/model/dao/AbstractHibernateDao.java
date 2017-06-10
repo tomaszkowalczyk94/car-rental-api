@@ -24,7 +24,6 @@ public abstract class AbstractHibernateDao<T, PK> {
 	protected EntityManager entityManager;
 
 	public T create(T t) {
-		System.out.println(t);
 		this.entityManager.persist(t);
 		return t;
 	}
