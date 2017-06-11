@@ -188,3 +188,100 @@ response html status: 204
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+#### GET /rentals
+response html status: 200 
+response body:
+
+```json
+[
+  {
+    "id": 1,
+    "startRental": 1497650400000,
+    "endRental": 1497045600000,
+    "user": 1,
+    "car": 1
+  },
+  {
+    "id": 2,
+    "startRental": 1185937200000,
+    "endRental": 1185937200000,
+    "user": 1,
+    "car": 1
+  },
+]
+```
+
+
+
+#### GET /rentals/1
+response html status: 200 
+response body:
+```json
+{
+  "id": 1,
+  "startRental": 1497650400000,
+  "endRental": 1497045600000,
+  "user": 1,
+  "car": 1
+}
+
+```
+
+#### POST /rentals
+request data: 
+```json
+{
+	"startRental" : "1185937200000",
+	"endRental" : "1185937200000",
+	"car" : 2,
+	"user" : 2
+}
+```
+response html status: 201
+response body:
+```json
+{
+  "id": 3,
+  "startRental": 1185937200000,
+  "endRental": null,
+  "user": 2,
+  "car": 2
+}
+```
+#### PUT /rentals/3
+request data: 
+```json
+{
+  "startRental": 1185937200000,
+  "endRental": 1185937200000,
+  "user": 2,
+  "car": 2
+}
+```
+response html status: 200
+response body:
+```json
+{
+  "id": 3,
+  "startRental": 1185937200000,
+  "endRental": 1185937200000,
+  "user": 2,
+  "car": 2
+}
+```
+
+#### DELETE /rentals/1
+response html status: 204
+
