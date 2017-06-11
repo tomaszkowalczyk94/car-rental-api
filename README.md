@@ -88,3 +88,105 @@ response body:
 response html status: 204
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### GET /cars
+response html status: 200 
+response body:
+
+```json
+[
+  {
+    "id": 1,
+    "registrationNumber": "TK 9999",
+    "model": "WV Passat",
+    "color": "red"
+  },
+  {
+    "id": 2,
+    "registrationNumber": "TK 9998",
+    "model": "WV Passat",
+    "color": "blue"
+  },
+]
+```
+
+
+
+#### GET /cars/1
+response html status: 200 
+response body:
+```json
+{
+    "id": 1,
+    "registrationNumber": "TK 9999",
+    "model": "WV Passat",
+    "color": "red"
+}
+
+```
+
+#### POST /cars
+request data: 
+```json
+{
+	"model" : "WV Passat",
+	"registrationNumber": "TKI 2",
+	"color" : "pink"
+}
+```
+response html status: 201
+response body:
+```json
+{
+  "id": 2,
+  "registrationNumber": "TKI 2",
+  "model": "WV Passat",
+  "color": "pink"
+}
+```
+#### PUT /users/1
+request data: 
+```json
+{
+	"username" : "test1edit",
+	"email" : "test3@test.pl",
+	"firstName" : "test3",
+	"lastName" : "test3"
+}
+```
+response html status: 200
+response body:
+```json
+{
+  "id": 3,
+  "email": "test3@test.pl",
+  "username": "test3",
+  "firstName": "test3",
+  "lastName": "test3"
+}
+```
+
+#### DELETE /users/1
+response html status: 204
+
+
+
