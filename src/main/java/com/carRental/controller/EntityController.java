@@ -47,7 +47,7 @@ public abstract class EntityController<T extends EntityInterface<PK>, PK> {
         }
  
         getDao().create(entity);
-        return new ResponseEntity<T>(HttpStatus.CREATED);
+        return new ResponseEntity<T>(entity, HttpStatus.CREATED);
     }
 	
 	
