@@ -5,6 +5,7 @@
 #### GET /users
 
 html status: 200
+
 response body:
 
 ```json
