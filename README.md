@@ -1,5 +1,8 @@
 # car-rental-api
 
+Simple api, written only for master skills. 
+In project I use springboot.
+
 ## Examples:
 
 #### GET /users
