@@ -1,6 +1,6 @@
 # car-rental-api
 
-Simple api, written only for master skills. 
+Simple api, written only for learning programming
 In project I use springboot.
 
 ## Examples:
